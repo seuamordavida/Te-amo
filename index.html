@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pra Minha Princesa ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ff4d6d, #ff8fa3, #ffc2d1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 35px 25px;
+      border-radius: 30px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .heart {
+      font-size: 4rem;
+      animation: pulse 1.2s infinite;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background: white;
+      color: #ff4d6d;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #ffe5ec;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .floating-heart {
+      position: absolute;
+      color: rgba(255,255,255,0.5);
+      font-size: 20px;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .heart {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="heart">❤️</div>
+    <h1>Pra Você 💖</h1>
+    <p>
+      Você é a melhor parte dos meus dias.<br>
+      Seu sorriso deixa tudo mais bonito e sua presença faz meu coração bater diferente.
+      <br><br>
+      Obrigado por ser tão especial pra mim.
+    </p>
+
+    <button onclick="mostrarMensagem()">Clique Aqui ✨</button>
+
+    <div class="footer">
+      Feito com carinho por Luiz 💌
+    </div>
+  </div>
+
+  <script>
+    function mostrarMensagem() {
+      for(let i = 0; i < 60; i++) {
+        const explosionHeart = document.createElement('div');
+        explosionHeart.innerHTML = '❤️';
+        explosionHeart.style.position = 'fixed';
+        explosionHeart.style.left = '50%';
+        explosionHeart.style.top = '50%';
+        explosionHeart.style.fontSize = (Math.random() * 25 + 15) + 'px';
+        explosionHeart.style.pointerEvents = 'none';
+        explosionHeart.style.zIndex = '9999';
+        explosionHeart.style.transition = 'all 1.5s ease-out';
+
+        document.body.appendChild(explosionHeart);
+
+        const x = (Math.random() - 0.5) * 800;
+        const y = (Math.random() - 0.5) * 800;
+
+        setTimeout(() => {
+          explosionHeart.style.transform = `translate(${x}px, ${y}px) scale(1.5)`;
+          explosionHeart.style.opacity = '0';
+        }, 10);
+
+        setTimeout(() => {
+          explosionHeart.remove();
+        }, 1600);
+      }
+    }
+
+    for(let i = 0; i < 25; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
